@@ -1,7 +1,9 @@
-﻿using System;
+﻿using MiniConsoleAppProject.Models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Threading.Channels;
 using System.Threading.Tasks;
 
 namespace MiniConsoleAppProject
@@ -24,7 +26,7 @@ namespace MiniConsoleAppProject
                 switch (num)
                 {
                     case 1:
-                        Console.WriteLine("Product created");
+                        
                         break;
                     case 2:
                         Console.WriteLine("Product deleted");
@@ -48,7 +50,14 @@ namespace MiniConsoleAppProject
                         Console.WriteLine("Order Status changed");
                         break;
                     case 0:
-                        Console.WriteLine("Program ended");
+                        if(result)
+                        {
+                            Console.WriteLine("Program ended");
+                        }
+                        else
+                        {
+                            Console.WriteLine("Wrong input");
+                        }
                         break;
                     default:
                         Console.WriteLine("Wrong input. Please,try again");

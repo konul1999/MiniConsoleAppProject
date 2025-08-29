@@ -12,7 +12,12 @@ namespace MiniConsoleAppProject.Models
         public Product Product { get; }
         public int Count { get; }
         public decimal Price { get; }
-        public decimal SubTotal { get; }    
+        public decimal SubTotal { get; }
+
+        public OrderItem()
+        {
+
+        }
 
 
     }

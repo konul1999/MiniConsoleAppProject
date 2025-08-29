@@ -8,6 +8,10 @@ namespace MiniConsoleAppProject.Models.Base
 {
     internal abstract class BaseEntity
     {
-        public int Id { get; set; }
+        public Guid Id { get; set; }
+        public BaseEntity()
+        {
+            Id = Guid.NewGuid();
+        }
     }
 }
