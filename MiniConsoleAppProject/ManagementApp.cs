@@ -1,4 +1,5 @@
 ﻿using MiniConsoleAppProject.Models;
+using MiniConsoleAppProject.Services;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -10,6 +11,11 @@ namespace MiniConsoleAppProject
 {
     internal class ManagementApp
     {
+        public ProductService ProductService { get; set; }
+        public ManagementApp()
+        {
+            ProductService = new ProductService();
+        }
         public void Run()
         {
             int num = 0;
@@ -26,7 +32,7 @@ namespace MiniConsoleAppProject
                 switch (num)
                 {
                     case 1:
-                        
+                        ProductService.CreateProduct();
                         break;
                     case 2:
                         Console.WriteLine("Product deleted");
