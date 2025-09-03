@@ -11,64 +11,54 @@ namespace MiniConsoleAppProject
 {
     internal class ManagementApp
     {
-        public ProductService ProductService { get; set; }
+        private ProductService ProductService { get; set; }
+
         public ManagementApp()
         {
             ProductService = new ProductService();
         }
+
         public void Run()
         {
-            int num = 0;
-            string str = null;
-            bool result = false;
-
-            while (!(num == 0 && result))
+            while (true)
             {
-                Console.WriteLine("1.Create Product\n2.Delete Product\n3.Get Product By Id\n4.Show All Product\n5.Refill Product\n6.Order Product\n7.Show All Orders\n8.Change Order Status\n\n0.Exit ");
-                str = Console.ReadLine();
+                Console.WriteLine("\n--- Menu ---");
+                Console.WriteLine("1. Create Product");
+                Console.WriteLine("2. Delete Product");
+                Console.WriteLine("3. Get Product By Id");
+                Console.WriteLine("4. Show All Products");
+                Console.WriteLine("5. Refill Product");
+                Console.WriteLine("6. Order Product");
+                Console.WriteLine("7. Show All Orders");
+                Console.WriteLine("8. Change Order Status");
+                Console.WriteLine("0. Exit");
+                Console.Write("Select option: ");
+
+                string input = Console.ReadLine();
                 Console.Clear();
-                result = int.TryParse(str, out num);
 
-                switch (num)
+                if (!int.TryParse(input, out int choice))
                 {
-                    case 1:
-                        ProductService.CreateProduct();
-                        break;
-                    case 2:
-                        Console.WriteLine("Product deleted");
-                        break;
-                    case 3:
-                        Console.WriteLine("List by Product Id");
-                        break;
-                    case 4:
-                        Console.WriteLine("Products list");
-                        break;
-                    case 5:
-                        Console.WriteLine("Product refilled");
-                        break;
-                    case 6:
-                        Console.WriteLine("Product Ordered");
-                        break;
-                    case 7:
-                        Console.WriteLine("All Orders List");
-                        break;
-                    case 8:
-                        Console.WriteLine("Order Status changed");
-                        break;
-                    case 0:
-                        if(result)
-                        {
-                            Console.WriteLine("Program ended");
-                        }
-                        else
-                        {
-                            Console.WriteLine("Wrong input");
-                        }
-                        break;
-                    default:
-                        Console.WriteLine("Wrong input. Please,try again");
-                        break;
+                    Console.WriteLine("Invalid input!");
+                    continue;
+                }
 
+                switch (choice)
+                {
+                    case 1: ProductService.CreateProduct(); break;
+                    case 2: ProductService.DeleteProduct(); break;
+                    case 3: ProductService.GetProductById(); break;
+                    case 4: ProductService.ShowAllProducts(); break;
+                    case 5: ProductService.RefillProduct(); break;
+                    case 6: ProductService.OrderProduct(); break;
+                    case 7: ProductService.ShowAllOrders(); break;
+                    case 8: ProductService.ChangeOrderStatus(); break;
+                    case 0:
+                        Console.WriteLine("Program exited.");
+                        return;
+                    default:
+                        Console.WriteLine("Wrong input. Try again.");
+                        break;
                 }
             }
         }
