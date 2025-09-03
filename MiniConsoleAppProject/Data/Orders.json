@@ -1,1 +1,1 @@
-[]
+[{"Items":[{"Product":{"Name":"prod4","Price":150.0,"Stock":40,"Id":"72233c6f-8a47-4852-a86a-3362f3250b2e"},"Count":60,"Price":150.0,"SubTotal":9000.0,"Id":"837956e5-4b1b-467b-a114-69b22da777b3"},{"Product":{"Name":"prod4","Price":150.0,"Stock":40,"Id":"72233c6f-8a47-4852-a86a-3362f3250b2e"},"Count":60,"Price":150.0,"SubTotal":9000.0,"Id":"f2d24f9c-7b7b-4b9a-981e-1ae7d1ea16f0"}],"Total":18000.0,"Email":"@","Status":1,"OrderedAt":"2025-09-03T15:46:40.0858886+04:00","Id":"b1a975cc-1a5f-4084-9a4f-d164f24ad2be"}]

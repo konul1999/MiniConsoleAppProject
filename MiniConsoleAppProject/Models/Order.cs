@@ -16,15 +16,9 @@ namespace MiniConsoleAppProject.Models
         public OrderStatus Status { get; private set; }
         public DateTime OrderedAt { get; }
 
-        public Order(string email)
+        public Order(string email, List<OrderItem> list)
         {
-            if (string.IsNullOrWhiteSpace(email) || !email.Contains("@"))
-            {
-                Console.WriteLine($"Error: Invalid email ('{email}'). Order creation aborted.");
-                Email = null; 
-                return;
-            }
-
+            Items = new List<OrderItem>(list); 
             Email = email;
             Status = OrderStatus.Pending;
             OrderedAt = DateTime.Now;

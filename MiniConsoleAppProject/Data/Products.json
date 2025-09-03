@@ -1,9 +1,1 @@
-[
-
-  {
-    "Name": "alma",
-    "Price": 5.0,
-    "Stock": 13,
-    "Id": "f73a04a3-a89b-4319-8956-feff44058747"
-  }
-]
+[{"Name":"Prod1","Price":45.0,"Stock":0,"Id":"eaa48c1e-8caf-4e0e-94d7-b12b967844e0"},{"Name":"prod3","Price":100.0,"Stock":200,"Id":"6f4605db-60e7-4763-973c-990317a181ea"},{"Name":"prod4","Price":150.0,"Stock":40,"Id":"72233c6f-8a47-4852-a86a-3362f3250b2e"},{"Name":"alma1","Price":80.0,"Stock":0,"Id":"c2df7bd2-a7da-4c12-bed4-afa4b3bcaf3e"}]

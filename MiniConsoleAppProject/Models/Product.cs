@@ -37,7 +37,7 @@ namespace MiniConsoleAppProject.Models
         public void PrintInfo()
         {
             string stockStatus = Stock <= 0 ? "Out of Stock" : "";
-            Console.WriteLine($"ID: {Id}\nName: {Name}\nPrice: {Price:C}\nStock: {Stock} {stockStatus}\n");
+            Console.WriteLine($"ID: {Id}\nName: {Name}\nPrice: {Price}\nStock: {Stock} {stockStatus}\n");
         }
     }
 }
