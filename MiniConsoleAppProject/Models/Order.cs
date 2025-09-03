@@ -10,7 +10,7 @@ namespace MiniConsoleAppProject.Models
 {
     internal class Order : BaseEntity
     {
-        public List<OrderItem> Items { get; } = new List<OrderItem>();
+        public List<OrderItem> Items { get; set; }
         public decimal Total => Items.Sum(i => i.SubTotal);
         public string Email { get; }
         public OrderStatus Status { get; private set; }

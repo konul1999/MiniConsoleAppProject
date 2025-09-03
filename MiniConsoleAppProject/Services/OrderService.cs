@@ -89,7 +89,37 @@ namespace MiniConsoleAppProject.Services
             OrderRepository.Serialize(_orPath, orders);
 
             Console.WriteLine($"Order created successfully! Total: {order.Total}");
-
+        }
+        public void ShowAllOrders()
+        {
+            List<Order> orders = OrderRepository.Deserialize(_orPath);
+            if (orders.Count == 0)
+            {
+                Console.WriteLine("No orders found!");
+                return;
+            }
+            foreach (var order in orders)
+                order.PrintInfo();
+        }
+        public void ChangeOrderStatus()
+        {
+            Console.WriteLine("Enter Order ID to change status:");
+            string input = Console.ReadLine();
+            List<Order> orders = OrderRepository.Deserialize(_orPath);
+            Order order = orders.FirstOrDefault(o => o.Id.ToString() == input);
+            if (order == null) 
+            { 
+                Console.WriteLine("Order not found!"); 
+                return; 
+            }
+            Console.WriteLine("Select new status: 1.Pending 2.Confirmed 3.Completed");
+            if (!int.TryParse(Console.ReadLine(), out int statusInt) || statusInt < 1 || statusInt > 3)
+            {
+                Console.WriteLine("Invalid status!"); return;
+            }
+            order.ChangeStatus((OrderStatus)statusInt);
+            OrderRepository.Serialize(_orPath, orders);
+            Console.WriteLine($"Order status updated to {order.Status}");
 
         }
     }
