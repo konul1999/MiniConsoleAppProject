@@ -13,11 +13,13 @@ namespace MiniConsoleAppProject.Models
         public List<OrderItem> Items { get; set; }
         public decimal Total => Items.Sum(i => i.SubTotal);
         public string Email { get; }
-        public OrderStatus Status { get; private set; }
+        public OrderStatus Status { get;  set; }
         public DateTime OrderedAt { get; }
 
         public Order(string email, List<OrderItem> list)
         {
+            if (list == null)
+                list = new List<OrderItem>(); 
             Items = new List<OrderItem>(list); 
             Email = email;
             Status = OrderStatus.Pending;
@@ -61,10 +63,10 @@ namespace MiniConsoleAppProject.Models
                 return;
             }
 
-            Console.WriteLine($"Order ID: {Id}\nEmail: {Email}\nStatus: {Status}\nOrdered At: {OrderedAt}\nTotal: {Total:C}");
+            Console.WriteLine($"Order ID: {Id}\nEmail: {Email}\nStatus: {Status}\nOrdered At: {OrderedAt}\nTotal: {Total}");
             foreach (var item in Items)
             {
-                Console.WriteLine($"- {item.Product.Name} | Price: {item.Price:C} | Count: {item.Count} | SubTotal: {item.SubTotal:C}");
+                Console.WriteLine($"- {item.Product.Name} | Price: {item.Price} | Count: {item.Count} | SubTotal: {item.SubTotal}");
             }
             Console.WriteLine();
         }

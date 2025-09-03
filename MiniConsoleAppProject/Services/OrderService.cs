@@ -103,6 +103,7 @@ namespace MiniConsoleAppProject.Services
         }
         public void ChangeOrderStatus()
         {
+            ShowAllOrders();
             Console.WriteLine("Enter Order ID to change status:");
             string input = Console.ReadLine();
             List<Order> orders = OrderRepository.Deserialize(_orPath);
@@ -117,8 +118,8 @@ namespace MiniConsoleAppProject.Services
             {
                 Console.WriteLine("Invalid status!"); return;
             }
-            order.ChangeStatus((OrderStatus)statusInt);
-            OrderRepository.Serialize(_orPath, orders);
+            order.Status = ((OrderStatus)statusInt);
+            OrderRepository.Serialize(_orPath, orders); 
             Console.WriteLine($"Order status updated to {order.Status}");
 
         }

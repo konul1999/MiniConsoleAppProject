@@ -39,6 +39,7 @@ namespace MiniConsoleAppProject.Services
 
         public void DeleteProduct()
         {
+            ShowAllProducts();
             Console.WriteLine("Enter Product ID to delete:");
             string input = Console.ReadLine();
 
