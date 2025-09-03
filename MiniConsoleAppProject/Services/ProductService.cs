@@ -1,11 +1,14 @@
 ﻿using MiniConsoleAppProject.Models;
+using MiniConsoleAppProject.Repositories;
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq;
 using System.Security.Cryptography.X509Certificates;
 using System.Text;
 using System.Threading.Tasks;
+using System.Transactions;
 
 
 namespace MiniConsoleAppProject.Services
@@ -13,6 +16,8 @@ namespace MiniConsoleAppProject.Services
     internal class ProductService
     {
         public readonly string _path= @"C:\Users\ASUS\Desktop\MiniConsoleAppProject\MiniConsoleAppProject\Data\Products.json";
+
+        public Repository<Product> ProductRepository {  get; set; } = new Repository<Product>();
 
         private string GetName()
         {
@@ -29,23 +34,26 @@ namespace MiniConsoleAppProject.Services
                 return name;
             }
            
-
-
             Console.WriteLine("Product created");
-           
-            using (StreamReader sr = new (_path))
-            { 
-                sr.ReadToEnd();
-            }
-            string json = JsonConvert.SerializeObject(product);
 
-            using (StreamWriter sw = new StreamWriter(_path))
+            if (name is null) return;
+
+          List<Product> products =  ProductRepository.Deserialize(_path);
+            
+            
+            bool isDublicate=products.Any(p => p.Name == name);
+            if (isDublicate)
             {
-                sw.Write(json);
+                Console.Clear();
+                Console.WriteLine($"Order name {name} already exist");
+                return; 
             }
+
+
+
 
         }
-        
+
         private void GetPrice()
         {
 
@@ -67,12 +75,21 @@ namespace MiniConsoleAppProject.Services
             Console.Clear();
             Console.WriteLine("Product created");
 
+
+
+
+
+            string json = JsonConvert.SerializeObject(order);
+
             
-                
-            
-            
-            
+            //Products.Add(Product);
+            //ProductRepository.Serialize(_path,Products)
+
+
+
+
         }
+          
 
       
     }
